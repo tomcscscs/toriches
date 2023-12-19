@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
@@ -38,19 +40,17 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="/WEB-INF/mybatis/config.xml" />
 		<property name="mapperLocations"
-			ref="/WEB-INF/mybatis/mapper/*.xml" />
-		<property name="configuration"
-			ref="/WEB-INF/mybatis/config.xml" />
-
-
-		<!-- <property name="configuration"> <bean class="org.apache.ibatis.session.Configuration"> 
-			<property name="mapUnderscoreToCamelCase" value="true" /> </bean> </property> -->
-
+			value="/WEB-INF/mybatis/mapper/*.xml" />
 	</bean>
+
+
 
 
 

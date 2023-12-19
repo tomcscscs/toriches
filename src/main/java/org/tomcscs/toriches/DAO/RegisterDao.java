@@ -1,22 +1,18 @@
 package org.tomcscs.toriches.DAO;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.tomcscs.toriches.model.Player;
 
 @Repository
 
 public class RegisterDao {
-
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	SqlSession sqlSession;
 
 	public int save(Player one) {
-		return jdbcTemplate.update("insert into players values (?,?,?)", one.getId(), one.getPassword(),
-				one.getBalance());
-		
-		
+		return sqlSession.insert("players.save", one);
 
 	}
 

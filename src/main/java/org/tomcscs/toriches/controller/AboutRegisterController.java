@@ -25,13 +25,13 @@ public class AboutRegisterController {
 	}
 
 	@PostMapping
-	public String registerToRichesTable(@Valid @RequestParam(required = false) String id, @Valid
-			@RequestParam(required = false) String password, @RequestParam(required = false) int balance) {//모델로 받아놓고. 밸리드를 해야한다
-
+	public String registerToRichesTable(@RequestParam(required = false) String id, 
+			@RequestParam(required = false) String password, @RequestParam(required = false) int balance) {
+		
 		Player player = new Player(id, password, balance);
 		registerDao.save(player);
 		
-		return "redirect:/view/success";
+		return "redirect:/index";
 		
 		
 		

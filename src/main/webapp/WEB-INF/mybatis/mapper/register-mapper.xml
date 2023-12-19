@@ -4,11 +4,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="items">
+<mapper namespace="players">
 	
-	<select id="findAll" resultType="item">
-		select * from items order by price desc
-	</select>
-
+	<insert id="save" parameterType="player">
+		insert into players values (#{id}, #{password}, #{balance})	
+	</insert>
+	
 
 </mapper>
